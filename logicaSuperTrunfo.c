@@ -1,26 +1,27 @@
 #include <stdio.h>
+#include <string.h>
 
-struct Carta {
-    char estado[30];
-    char codigo[10];
-    char cidade[30];
+// Definição da struct para armazenar os atributos das cartas
+typedef struct {
+    char estado[50];
+    char codigo[5];
+    char cidade[50];
     int populacao;
     float area;
     float pib;
-    int pontosTuristicos;
-};
+    int pontos_turisticos;
+    float densidade_populacional;
+} Carta;
 
 int main() {
-    struct Carta carta1, carta2;
-    float densidade1, densidade2;
+    Carta carta1, carta2;
 
-    // Cadastro da primeira carta
     printf("=== Cadastro da Carta 1 ===\n");
     printf("Estado: ");
     scanf(" %[^\n]", carta1.estado);
-    printf("Codigo: ");
-    scanf(" %s", carta1.codigo);
-    printf("Cidade: ");
+    printf("Codigo da carta: ");
+    scanf(" %[^\n]", carta1.codigo);
+    printf("Nome da cidade: ");
     scanf(" %[^\n]", carta1.cidade);
     printf("Populacao: ");
     scanf("%d", &carta1.populacao);
@@ -29,15 +30,16 @@ int main() {
     printf("PIB (em bilhoes): ");
     scanf("%f", &carta1.pib);
     printf("Numero de pontos turisticos: ");
-    scanf("%d", &carta1.pontosTuristicos);
+    scanf("%d", &carta1.pontos_turisticos);
 
-    // Cadastro da segunda carta
+    carta1.densidade_populacional = carta1.populacao / carta1.area;
+
     printf("\n=== Cadastro da Carta 2 ===\n");
     printf("Estado: ");
     scanf(" %[^\n]", carta2.estado);
-    printf("Codigo: ");
-    scanf(" %s", carta2.codigo);
-    printf("Cidade: ");
+    printf("Codigo da carta: ");
+    scanf(" %[^\n]", carta2.codigo);
+    printf("Nome da cidade: ");
     scanf(" %[^\n]", carta2.cidade);
     printf("Populacao: ");
     scanf("%d", &carta2.populacao);
@@ -46,51 +48,51 @@ int main() {
     printf("PIB (em bilhoes): ");
     scanf("%f", &carta2.pib);
     printf("Numero de pontos turisticos: ");
-    scanf("%d", &carta2.pontosTuristicos);
+    scanf("%d", &carta2.pontos_turisticos);
 
-    // Calculo da densidade
-    densidade1 = carta1.populacao / carta1.area;
-    densidade2 = carta2.populacao / carta2.area;
+    carta2.densidade_populacional = carta2.populacao / carta2.area;
 
-    // Comparacao de populacao
+    printf("\n=== Comparacoes ===\n");
+
+    // População
     if (carta1.populacao > carta2.populacao)
-        printf("\nVencedor por Populacao: %s\n", carta1.cidade);
+        printf("Populacao: %s venceu\n", carta1.cidade);
     else if (carta2.populacao > carta1.populacao)
-        printf("\nVencedor por Populacao: %s\n", carta2.cidade);
+        printf("Populacao: %s venceu\n", carta2.cidade);
     else
-        printf("\nPopulacao: Empate!\n");
+        printf("Populacao: empate\n");
 
-    // Comparacao de area
+    // Área
     if (carta1.area > carta2.area)
-        printf("Vencedor por Area: %s\n", carta1.cidade);
+        printf("Area: %s venceu\n", carta1.cidade);
     else if (carta2.area > carta1.area)
-        printf("Vencedor por Area: %s\n", carta2.cidade);
+        printf("Area: %s venceu\n", carta2.cidade);
     else
-        printf("Area: Empate!\n");
+        printf("Area: empate\n");
 
-    // Comparacao de PIB
+    // PIB
     if (carta1.pib > carta2.pib)
-        printf("Vencedor por PIB: %s\n", carta1.cidade);
+        printf("PIB: %s venceu\n", carta1.cidade);
     else if (carta2.pib > carta1.pib)
-        printf("Vencedor por PIB: %s\n", carta2.cidade);
+        printf("PIB: %s venceu\n", carta2.cidade);
     else
-        printf("PIB: Empate!\n");
+        printf("PIB: empate\n");
 
-    // Comparacao de pontos turisticos
-    if (carta1.pontosTuristicos > carta2.pontosTuristicos)
-        printf("Vencedor por Pontos Turisticos: %s\n", carta1.cidade);
-    else if (carta2.pontosTuristicos > carta1.pontosTuristicos)
-        printf("Vencedor por Pontos Turisticos: %s\n", carta2.cidade);
+    // Pontos turísticos
+    if (carta1.pontos_turisticos > carta2.pontos_turisticos)
+        printf("Pontos turisticos: %s venceu\n", carta1.cidade);
+    else if (carta2.pontos_turisticos > carta1.pontos_turisticos)
+        printf("Pontos turisticos: %s venceu\n", carta2.cidade);
     else
-        printf("Pontos Turisticos: Empate!\n");
+        printf("Pontos turisticos: empate\n");
 
-    // Comparacao de densidade populacional (MENOR vence)
-    if (densidade1 < densidade2)
-        printf("Vencedor por Densidade Populacional: %s\n", carta1.cidade);
-    else if (densidade2 < densidade1)
-        printf("Vencedor por Densidade Populacional: %s\n", carta2.cidade);
+    // Densidade populacional (menor valor vence)
+    if (carta1.densidade_populacional < carta2.densidade_populacional)
+        printf("Densidade populacional: %s venceu\n", carta1.cidade);
+    else if (carta2.densidade_populacional < carta1.densidade_populacional)
+        printf("Densidade populacional: %s venceu\n", carta2.cidade);
     else
-        printf("Densidade Populacional: Empate!\n");
+        printf("Densidade populacional: empate\n");
 
     return 0;
 }
