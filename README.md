@@ -1,53 +1,22 @@
-#  Desafio Super Trunfo – Países (Nível Novato)
-
-Este projeto é a primeira etapa do *Desafio Super Trunfo – Países, onde criamos um sistema simples em **C* para comparar cartas de cidades com base em atributos como população, área, PIB, pontos turísticos e densidade populacional.
-
----
-
-##  Objetivos
-
-No nível *Novato*, o sistema deve:
-
-- Permitir o *cadastro de duas cartas* de cidades.
-- Armazenar informações como:
-  - Estado
-  - Código da carta
-  - Nome da cidade
-  - População
-  - Área
-  - PIB
-  - Número de pontos turísticos
-- Calcular a *densidade populacional* (população / área).
-- Comparar os atributos das cartas utilizando estruturas condicionais (if e if-else).
-- Determinar a carta vencedora:
-  - *Maior valor vence, exceto para **densidade populacional, onde **o menor valor vence*.
-- Exibir o resultado das comparações no terminal.
-
----
-
-##  Entrada de Dados
-
-Os dados das duas cartas devem ser informados *manualmente* pelo usuário via terminal, seguindo as solicitações do programa.
-
----
-
-##  Saída de Dados
-
-Após o cadastro, o sistema exibe o resultado das comparações:
----
-
-##  Tecnologias Utilizadas
-
-- Linguagem C
-- Estruturas condicionais (if e if-else)
-- Estrutura struct para organizar os atributos das cartas
-
----
-
-##  Como Executar
-
-1. Clone este repositório ou copie o código para um arquivo chamado super_trunfo.c.
-2. Compile o programa:
-   ```bash
-   gcc super_trunfo.c -o super_trunfo
-   
+O que o desafio pede x O que o código faz
+	1.	Permitir o cadastro de duas cartas de cidades
+	•	 O programa pede os dados da Carta 1 e da Carta 2 no terminal.
+	2.	Armazenar informações:
+	•	Estado → carta.estado
+	•	Código da carta → carta.codigo
+	•	Nome da cidade → carta.cidade
+	•	População → carta.populacao
+	•	Área → carta.area
+	•	PIB → carta.pib
+	•	Número de pontos turísticos → carta.pontos_turisticos
+	•	 Tudo isso está dentro da struct Carta.
+	3.	Calcular a densidade populacional (população / área)
+	•	 O programa calcula e guarda em carta.densidade_populacional.
+	4.	Comparar os atributos usando if / if-else
+	•	 Todos os atributos são comparados com if e else if.
+	5.	Determinar a carta vencedora:
+	•	Regra aplicada:
+	•	Maior valor vence (população, área, PIB, pontos turísticos).
+	•	Menor valor vence (densidade populacional).
+	6.	Exibir o resultado no terminal
+	•	 O programa mostra quem venceu em cada atributo (ou empate).
